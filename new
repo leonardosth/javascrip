@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+
+    <script>
+    
+        window.onload = function(){
+            console.log("Carregou");
+        }
+
+        function imc(altura, peso) {
+            var resultado = peso / (altura * altura);
+            return resultado;
+        }
+
+        function entradaValida(altura, peso){
+            //alertar que o valor entrado é incorreto
+
+            if(!altura){
+                alert ("Informe a altura");
+                return false;
+            }
+
+            if (isNaN(peso)){
+                alert("Altura inválida");
+                return false;
+            }
+
+            if (!peso) {
+                alert("Informe o peso");
+                return false;
+            }
+
+            if(isNaN(peso)){
+                alert("Peso inválido");
+                return false;
+            }
+
+            return true;
+        }
+        
+        
+        function calcular(){
+
+            //variavel pega o valor do elemento html pelo id
+
+            var campoAltura = document.getElementById("campoAltura");
+            var campoPeso = document.getElementById("campoPeso");
+            var h2Resultado = document.getElementById("resultado");
+
+            //cria variavel com os valores pegos acima
+
+            var altura = campoAltura.value;
+            var peso = campoPeso.value;
+
+            // se a entrada for valida
+
+            if (entradaValida(altura, peso)){
+                altura = altura/100;
+
+                //calcula resultado
+                var resultado = imc(altura, peso);
+
+                //manda o resultado para a tela
+                h2Resultado.innerHTML = resultado.toFixed(2);
+            }
+
+            
+
+            //exibe informações no console
+
+            console.log("Altura: " + altura);
+            console.log("Peso: " + peso);
+            console.log("IMC: " + resultado);
+
+            
+        }
+
+    </script>
+  </head>
+  <body>
+    <h1>Calculo IMC</h1>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <>
+                    <div class="form-group">
+                    <label for="campoAltura">Altura</label>
+                    <input type="text" class="form-control" id="campoAltura" placeholder="Informe a altura (cm)">
+                    </div>
+                    <div class="form-group">
+                    <label for="campoPeso">Peso</label>
+                    <input type="text" class="form-control" id="campoPeso" placeholder="Informe o peso (kg)">
+                    </div>
+                    <button class="btn btn-primary" onclick="calcular()">Calcular</button>
+
+                    <h2 id="resultado"></h2>
+                </>
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
